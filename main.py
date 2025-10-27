@@ -6,6 +6,7 @@ from Maths.Math import Sub
 from Maths.Math import Divide
 from Messages.Messages import createFileSync
 from Time.TimerSet import createSleep
+from DB.db import dataSet
 
 num1 = rand.randint(1, 5) * 2
 num2 = rand.randint(1, 5) * 2
@@ -29,8 +30,12 @@ async def runnable():
 
         if answer == mMath.calculate_numbers():
             print("Correct")
+            await dataSet(
+                f"Correct Answer is: {mMath.get_num1()} * {mMath.get_num2()} = {mMath.get_num1() * mMath.get_num2()}")
         else:
             print("Not Correct")
+            await dataSet(
+                f"Wrong Answer was {mMath.get_num1()} * {mMath.get_num2()} = {mMath.get_num1() * mMath.get_num2()}")
 
     if question == "+":
 
@@ -39,8 +44,12 @@ async def runnable():
 
         if answer == aMath.calculate_numbers():
             print("Correct")
+            await dataSet(
+                f"Correct Answer is: {mMath.get_num1()} - {mMath.get_num2()} = {mMath.get_num1() - mMath.get_num2()}")
         else:
             print("Not Correct")
+            await dataSet(
+                f"Wrong Answer was {mMath.get_num1()} + {mMath.get_num2()} = {mMath.get_num1() + mMath.get_num2()}")
 
     if question == "-":
 
@@ -49,8 +58,12 @@ async def runnable():
 
         if answer == sMath.calculate_numbers():
             print("Correct")
+            await dataSet(
+                f"Wrong Answer was {mMath.get_num1()} - {mMath.get_num2()} = {mMath.get_num1() - mMath.get_num2()}")
         else:
             print("Not Correct")
+            await dataSet(
+                f"Wrong Answer was {mMath.get_num1()} - {mMath.get_num2()} = {mMath.get_num1() - mMath.get_num2()}")
 
     if question == "/":
 
@@ -59,9 +72,13 @@ async def runnable():
 
         if answer == dMath.calculate_numbers():
             print("Correct")
+            await dataSet(
+                f"Wrong Answer was {mMath.get_num1()} - {mMath.get_num2()} = {mMath.get_num1() / mMath.get_num2()}")
+
         else:
             print("Not Correct")
-
+            await dataSet(
+                f"Wrong Answer was {mMath.get_num1()} / {mMath.get_num2()} = {mMath.get_num1() / mMath.get_num2()}")
 
 try:
     asyncio.run(runnable())
